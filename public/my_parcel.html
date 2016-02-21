@@ -1,0 +1,78 @@
+<view-title>Mes colis</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <h3>Mes colis</h3>
+
+                        <p>Voici les colis que vous avez sauvegardé.</p>
+
+                        <div class="orange-b"><a href="/addNewParcel" class="orange-button" title="">Ajouter un colis</a></div>
+                        <div class="clearfix"></div>
+                        <div class="table table-2" ng-if="parcels.length > 0">
+                            <div class="header-row">
+                                <div class="col-1">Nom du colis</div>
+                                <div class="col-2">Numéro de suivi</div>
+                                <div class="col-3">Transporteur</div>
+                                <div class="col-4">Date</div>
+                                <div class="col-5"><img src="images/Alarm-Bell.png" alt=""/></div>
+                                <div class="col-6"><img src="images/blue-x.png" alt=""/></div>
+                            </div>
+                            <div class="table-content">
+                                <div class="row" dir-paginate="parcel in parcels | itemsPerPage: 20">
+                                    <div class="col-1 col1">
+                                        <p>Nom du colis</p>
+                                        {{ parcel.parcel_name }}
+                                    </div>
+                                    <div class="col-2 col2">
+                                        <p>Numéro de suivi</p>
+                                        <a href="/parcelTracking/{{ parcel.carrier_uuid }}/{{ parcel.code_tracking }}">{{
+                                            parcel.code_tracking }}</a>
+                                    </div>
+                                    <div class="col-3 col3">
+                                        <p>Transporteur</p>
+                                        <a href="/carrierRating/{{ parcel.carrier_uuid }}">{{
+                                            parcel.carrier_name }}</a>
+                                    </div>
+                                    <div class="col-4 col4">
+                                        <p>Date</p>
+                                        {{ parcel.created_at | amDateFormat:'LLLL' }}
+                                    </div>
+                                    <div class="col-5 col5">
+                                        <p>Notifications?</p>
+                                        <input type="checkbox" name="yes" ng-model="parcel.receive_notification"
+                                               ng-change="toggleNotification(parcel)">
+                                        <label>Oui</label>
+                                    </div>
+                                    <div class="col-6 col6">
+                                        <a href="" ng-click="removeParcel(parcel)">
+                                            <img src="images/green-x.png" alt=""/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <dir-pagination-controls template-url="partial/dirPaginationTpl.html"></dir-pagination-controls>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

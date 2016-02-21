@@ -1,0 +1,94 @@
+<view-title>Enregistrez-vous</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <h3>Encore un peu d'efforts...</h3>
+
+                        <p>Si vous souhaitez recevoir des notifications concernant {{ trackingForm.code_tracking }}, et que vous voulez donner un nom à votre colis pour mieux se souvenir, (ex. Pull de maman) merci de compléter ce formulaire.</p>
+
+                        <div class="last-tracking">
+                            <form name="homepage-tracker">
+                                <select class="selectPretty orange-select" id="autoCarrier"
+                                        ng-model="trackingForm.selectedCarrier"
+                                        ng-options="carrier.name for carrier in carriers"
+                                        ng-change="onChangeCarrier(carrier)">
+                                    <option></option>
+                                </select>
+                                <input type="text"
+                                       ng-model="trackingForm.code_tracking">
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="last-step">
+                            <div class="tracked-number">
+                                <strong>Numéro de suivi:</strong> {{ trackingForm.code_tracking }}
+                            </div>
+                            <div class="radio-buttons">
+                                <h6>Voulez-vous vous enregistrer?</h6>
+                                <select class="selectPretty" id="selectIsRegister" ng-model="flyForm.isRegister"
+                                        ng-options="boolean.value for boolean in booleans">
+                                </select>
+                            </div>
+                            <div class="left-input">
+                                <input type="text" id="flyFormFirstname" ng-model="flyForm.firstname"
+                                       class="registerInput"
+                                       placeholder="Prénom" disabled>
+                                <input type="text" id="flyFormLastname" ng-model="flyForm.lastname"
+                                       class="registerInput"
+                                       placeholder="Nom" disabled>
+                                <input type="text" id="flyFormEmail" ng-model="flyForm.email" class="registerInput"
+                                       placeholder="Email"
+                                       disabled>
+                            </div>
+                            <div class="right-input">
+                                <input type="text" id="flyFormPhone" ng-model="flyForm.phone" class="registerInput"
+                                       placeholder="Téléphone"
+                                       disabled>
+                                <input type="password" id="flyFormPassword" ng-model="flyForm.password"
+                                       class="registerInput"
+                                       placeholder="Mot de passe" disabled>
+                                <input type="password" id="flyFormPasswordConfirm" ng-model="flyForm.passwordConfirm"
+                                       placeholder="Confirmez le mot de passe" class="registerInput" disabled>
+                            </div>
+                            <div class="radio-buttons">
+                                <h6>Would you like to receive notifications for this parcel?</h6>
+                                <select class="selectPretty" id="selectIsReceiveNotifications"
+                                        ng-model="flyForm.isReceiveNotifications"
+                                        ng-options="boolean.value for boolean in booleans"
+                                        disabled>
+                                </select>
+                            </div>
+                            <div class="radio-buttons">
+                                <h6>Donnez un nom à ce colis pour mieux vous en souvenir</h6>
+                                <select class="selectPretty" id="selectIsNameParcel" ng-model="flyForm.isNameParcel"
+                                        ng-options="boolean.value for boolean in booleans"
+                                        disabled>
+                                </select>
+                                <input type="text" id="flyFormParcelName" ng-model="flyForm.parcel_name"
+                                       placeholder="Nom du colis" disabled>
+                            </div>
+                            <input type="submit" value="Continuer au suivi du colis" ng-click="submit(flyForm)">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

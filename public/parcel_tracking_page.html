@@ -1,0 +1,165 @@
+<view-title>Suivi de {{ carrier.name }}</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                    <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <div class="tracking-parcel">
+                            <div class="tracking-parcel-top">
+                                <div class="tracking-number"><strong>Numéro de suivi: </strong> {{ code_tracking }}
+                                </div>
+                            </div>
+                            <div class="status">
+                                <ul>
+                                    <li class="coloured"></li>
+                                    <li class="grey-arrow" ng-if="actualStep == null">En attente...</li>
+                                    <li class="grey-arrow" ng-if="actualStep == 2">En cours d'acheminement</li>
+                                    <li class="coloured" ng-if="actualStep == 3"></li>
+                                    <li class="grey-arrow" ng-if="actualStep == 3">Arrivé</li>
+                                </ul>
+                            </div>
+
+                            <div style="clear:both"></div>
+
+                            <div class="tracking-parcel-bottom">
+                                <div class="tracking-left">
+                                    <!-- <div class="info-row"><span>Official Links</span><a class="green" href="" title="">official
+                                        tracking</a><a class="green" href="" title="">help</a></div> -->
+
+                                    <div class="info-row"><span>Evaluations du transporteur</span><a
+                                            href="/addRating/{{ carrier.uuid }}/{{ code_tracking }}">
+                                        <div class="star" ng-repeat="star in ratingData.starRange">
+                                            <img ng-if="star.highlight == 1" src="images/big-star.png" alt=""/>
+                                            <img ng-if="star.highlight == 0" class="star"
+                                                 src="images/empty-big-star.png" alt=""/>
+                                        </div>
+                                        Heureux? Donnez votre avis.</a></div>
+                                    <div class="info-row darker"><span>Transporteur</span><a
+                                            href="/carrierRating/{{ carrier.uuid }}">{{ carrier.name }}</a></div>
+                                    <div class="info-row" ng-if="actualStep == 2">
+                                        <span>Statut</span>
+
+                                        <div class="status-icon">T</div>
+                                        Ce colis est en cours d'acheminement vers sa destination.
+                                    </div>
+                                    <div class="info-row" ng-if="actualStep == 3">
+
+                                        <span>Status</span>
+
+                                        <div class="status-icon">T</div>
+                                        Ce colis est arrivé à destination.
+                                    </div>
+                                    <div class="info-row darker"><span>Shipped on</span>{{ firstStep.scan_date |
+                                        date:'EEEE, MMMM d, y HH:mm:ss' }}
+                                    </div>
+
+                                    <div class="notify notify-tm">
+                                        <input type="checkbox" name="yes" ng-model="parcel.receive_notification"
+                                               ng-change="toggleNotification(parcel)">
+                                        <label>Notifiez moi à propos de ce colis.</label>
+                                    </div>
+                                </div>
+                                <div class="tracking-right">
+                                    <div id="map_canvas">
+                                        <!--<div id="5504800"></div>-->
+                                        <div data-ng-dfp-ad="div-gpt-ad-1426258913924-0"></div>
+                                        <!--<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">-->
+                                        <!--    <ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'" ng-if="markers != null">-->
+                                        <!--        <ui-gmap-windows show="show">-->
+                                        <!--            <div ng-non-bindable>{{title}}</div>-->
+                                        <!--        </ui-gmap-windows>-->
+                                        <!--    </ui-gmap-markers>-->
+                                        <!--</ui-gmap-google-map>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table table-3">
+                            <input type="submit" ng-click="toggleTimeline();" class="button" value="{{ tableTextBtn }}"
+                                   style="background-color:#ff952f;"/>
+                        </div>
+
+                        <div ng-if="!showTimeline" class="table table-3">
+
+                            <div class="header-row">
+                                <div class="col-1">Lieu de scan</div>
+                                <div class="col-2">Date du scan</div>
+                                <div class="col-3">Statut</div>
+                            </div>
+                            <div class="table-content" ng-repeat="step in steps">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <p>Delivery Progress</p>
+                                        <span ng-if="step.location.length > 0">{{ step.location }}</span>
+                                        <span ng-if="step.location.length < 2">Pas de localisation</span>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Date du scan</p>
+                                        {{ step.scan_date | date:'EEEE, MMMM d, y HH:mm:ss' }}
+                                    </div>
+                                    <div class="col-3">
+                                        <p>Statut</p>
+                                        {{ step.status }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div ng-if="showTimeline" class="table table-3 timeline">
+
+                            <span ng-if="steps.length == 0">Loading...</span>
+
+                            <section id="cd-timeline" class="cd-container">
+                                <div class="cd-timeline-block" ng-repeat="step in steps">
+                                    <div ng-if="step.step_level == 1"
+                                         class="cd-timeline-img cd-picture cd-location-levelone">
+                                        <img src="images/cd-icon-location.svg">
+                                    </div>
+                                    <div ng-if="step.step_level == 2"
+                                         class="cd-timeline-img cd-picture cd-location-leveltwo">
+                                        <img src="images/cd-icon-location.svg">
+                                    </div>
+                                    <div ng-if="step.step_level == 3"
+                                         class="cd-timeline-img cd-picture cd-location-levelthree">
+                                        <img src="images/cd-icon-location.svg">
+                                    </div>
+                                    <div ng-if="step.step_level == -1"
+                                         class="cd-timeline-img cd-picture cd-location-levelfor">
+                                        <img src="images/cd-icon-location.svg">
+                                    </div>
+                                    <!-- cd-timeline-img -->
+
+                                    <div class="cd-timeline-content">
+                                        <h2 ng-if="step.location.length > 0">{{ step.location }}</h2>
+
+                                        <h2 ng-if="step.location.length < 2">No location</h2>
+
+                                        <p>{{ step.status }}</p>
+                                        <span class="cd-date">{{ step.scan_date | amDateFormat:'LLLL' }}</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

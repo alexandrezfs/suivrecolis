@@ -1,0 +1,27 @@
+.animatedView {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    opacity: 1;
+}
+.animatedView.ng-enter,
+.animatedView.ng-leave {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.animatedView.ng-enter {
+    opacity: 0;
+}
+.animatedView.ng-enter-active {
+    opacity: 1;
+}
+.animatedView.ng-leave {
+    opacity: 1;
+}
+.animatedView.ng-leave-active {
+    opacity: 0;
+}

@@ -1,0 +1,164 @@
+<view-title>Evaluations des transporteurs</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <div class="carrier-page-search ratings-track-search">
+                            <form name="homepage-tracker">
+                                <select class="selectPretty middle-select" id="carriersTrack"
+                                        ng-model="trackingForm.selectedCarrier"
+                                        ng-options="carrier.name for carrier in carriersTrack">
+                                    <option></option>
+                                </select>
+                                <input type="text" placeholder="Code de suivi colis"
+                                       ng-model="trackingForm.code_tracking">
+                                <input type="submit" value="Suivre" ng-click="trackIt(trackingForm)">
+                            </form>
+                        </div>
+                        <div class="carrier-page-overview">
+
+                            <h6>Aperçu des transporteurs en France</h6>
+
+                            <div class="overview-left" ng-if="ratingData.onTimeCount > 0 && ratingData.onDayEarlyCount > 0 && ratingData.lateButRightDayCount > 0 && ratingData.oneDayLateOrMoreCount > 0 && ratingData.neverDeliveredCount > 0">
+
+                                <div class="bar">
+                                    <div class="progress" style="width:{{ratingData.onTimeCount_percent}}%;">On time
+                                    </div>
+                                    <div class="progress-number">{{ ratingData.onTimeCount }}</div>
+                                </div>
+
+                                <div class="bar">
+                                    <div class="progress" style="width:{{ratingData.onDayEarlyCount_percent}}%;">One day
+                                        early
+                                    </div>
+                                    <div class="progress-number">{{ ratingData.onDayEarlyCount }}</div>
+                                </div>
+
+                                <div class="bar">
+                                    <div class="progress" style="width:{{ratingData.lateButRightDayCount_percent}}%;">
+                                        Late, but on the right day
+                                    </div>
+                                    <div class="progress-number">{{ ratingData.lateButRightDayCount }}</div>
+                                </div>
+
+                                <div class="bar">
+                                    <div class="progress" style="width:{{ratingData.oneDayLateOrMoreCount_percent}}%;">
+                                        One day late or more
+                                    </div>
+                                    <div class="progress-number">{{ ratingData.oneDayLateOrMoreCount }}</div>
+                                </div>
+
+                                <div class="bar">
+                                    <div class="progress" style="width:{{ratingData.neverDeliveredCount_percent}}%;">
+                                        Never Delivered
+                                    </div>
+                                    <div class="progress-number">{{ ratingData.neverDeliveredCount }}</div>
+                                </div>
+
+                            </div>
+                            <div class="overview-right">
+                                <div class="overview-right-top">
+                                    <div class="overview-right-top-left">
+                                        {{ ratingData.mark }}
+                                    </div>
+                                    <div class="overview-right-top-right">
+
+                                        <div class="rating">
+                                            <div class="star" ng-repeat="star in ratingData.starRange">
+                                                <img ng-if="star.highlight == 1" src="images/big-star.png" alt=""/>
+                                                <img ng-if="star.highlight == 0" class="star"
+                                                     src="images/empty-big-star.png" alt=""/>
+                                            </div>
+                                        </div>
+
+                                        <div class="counter-ratings">based on {{ ratingData.ratingCount }} ratings</div>
+
+                                    </div>
+                                </div>
+                                <div class="overview-right-bottom">
+                                    <div class="overview-right-bottom-left">
+                                        <img src="images/segment.png" alt=""/>
+                                    </div>
+                                    <div class="overview-right-bottom-right">
+                                        <div class="recipient">
+                                            <div class="recipient-square">a</div>
+                                            Destinataire ({{ ratingData.recipientCount }})
+                                        </div>
+                                        <div class="sender">
+                                            <div class="sender-square">a</div>
+                                            Expéditeur ({{ ratingData.senderCount }})
+                                        </div>
+                                        <div class="party">
+                                            <div class="party-square">a</div>
+                                            Personne tierce ({{ ratingData.thirdPartyCount }})
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choose-carrier">
+                            <h6>Choisir un transporteur</h6>
+                            <select class="selectPretty selectCarriers"
+                                    id="carriersRating"
+                                    ng-model="selectedCarrierRating"
+                                    ng-options="carrier.name for carrier in carriersRating"
+                                    ng-change="toSingleCarrierRating(selectedCarrierRating.uuid)">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="testimonials">
+
+                            <div class="top">
+                                <h4>Evaluations des transporteurs</h4>
+                                <dir-pagination-controls
+                                        template-url="partial/dirPaginationTpl.html"></dir-pagination-controls>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="testimonial grey" dir-paginate="rating in ratings | itemsPerPage: 20">
+                                <div class="firm-logo"><img src="{{ rating.carrier.image }}" alt=""/></div>
+                                <div class="about-firm">
+                                    <div class="title"><a href="/carrierRating/{{ rating.carrier.uuid }}">{{ rating.carrier.name }}</a></div>
+                                    <div class="counter">{{ rating.created_at | amDateFormat:'LLLL' }}</div>
+                                    <div class="rating">
+                                        <div class="star" ng-repeat="star in rating.starRange">
+                                            <img ng-if="star.highlight == 1" src="images/star.png" alt=""/>
+                                            <img ng-if="star.highlight == 0" class="star"
+                                                 src="images/empty-star.png" alt=""/>
+                                        </div>
+                                    </div>
+                                    <p>Un utilisateur enregistré {{ rating.user_type_value }} a tracké le colis {{ rating.carrier.name }}
+                                        sur
+                                        SuivreColis.fr et a ainsi senti que le transport de
+                                        {{ rating.carrier.name }} a été <span>{{ rating.service_quality_value }}</span>
+                                        . Dans l'ensemble, la qualité de l'acheminement a été
+                                        <span>{{ rating.deliver_type_value }}</span>.</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <dir-pagination-controls template-url="partial/dirPaginationTpl.html"></dir-pagination-controls>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

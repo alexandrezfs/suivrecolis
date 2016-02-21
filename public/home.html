@@ -1,0 +1,66 @@
+<view-title>Suivre Mon Colis .fr - Suivez votre colis COLISSIMO, TNT, DHL et tous les autres grands transporteurs de France.</view-title>
+
+<div class="page">
+    <div class="blue-part">
+        <div class="container">
+            <!-- sidebar -->
+            <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+            </div>
+            <!-- end sidebar -->
+        </div>
+        <!-- end container-->
+
+        <div class="container">
+            <div class="main-content">
+                <div class="top-homepage">
+                    <div class="homepage-top-banner"><!--<img src="images/728x90-AD-Banner.png" alt="banner"/>--><!--<div id="4843874"></div>--><div style="width:auto; height:auto;" align="center"><div data-ng-dfp-ad="div-gpt-ad-1426258854054-0"></div></div></div>
+                    <div class="welcome-text">
+                        <h2><a href="/signRegister" class="anonymousLink">Bienvenue</a></h2>
+
+                        <p>Si vous voulez savoir où se trouve votre colis, et si vous êtes une entreprise et que vous souhaitez suivre tous vos colis sur une seule plateforme ou encore que vous êtes un développeur à la recherche d'une API de suivi de colis, vous êtes au bon endroit. Avec plus de 15 millions de requêtes dévlivrées chaque année, SuivreColis est le leader du tracking de colis en France.</p>
+                    </div>
+                    <div class="homepage-tracker">
+                        <form name="homepage-tracker">
+                            <select class="selectPretty" id="selectCarriers" ng-model="trackingForm.selectedCarrier"
+                                    ng-options="carrier.name for carrier in carriers">
+                                <option></option>
+                            </select>
+                            <input type="text" placeholder="Tracking code or AWB" ng-model="trackingForm.code_tracking">
+                            <input type="submit" value="Suivre Mon Colis" ng-click="trackIt(trackingForm)">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end blue part-->
+    <div class="white-part">
+        <div class="container">
+            <div class="main-content">
+                <div class="bottom-homepage">
+                    <ul>
+                        <li class="pin">
+                            <h4>Tenez vous informé</h4>
+
+                            <p>Ne perdez plus jamais un code de suivi. Notre système fournit aux particuliers comme aux entreprises une interface épurée qui vous aide à garder un oeil sur chaque numéro de suivi. Inscription GRATUITE!</p>
+                        </li>
+                        <li class="sound">
+                            <h4>Notifications</h4>
+
+                            <p>Lorsque vous vous enregistrez, une fois le colis ajouté à notre système, vous pouvez opter pour les notifications. Ce qui veut dire que vous gardez un oeil sur votre colis chaque fois que son statut change, vous recevez une notification par email.</p>
+                        </li>
+                        <li class="envelope">
+                            <h4><a href="/contact" class="anonymousLink">Suggestions</a></h4>
+
+                            <p>Nous ne supportons pas votre transporteur favori? Pas de problème! Complétez notre formulaire de contact. Si vous êtes un transporteur, superbe! Nous aimerions entendre parler de vous, écrivez-nous!</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

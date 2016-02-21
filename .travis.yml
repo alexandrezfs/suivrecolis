@@ -1,0 +1,33 @@
+env:
+  global:
+    - BRANCH_TO_DEPLOY=trackFR
+    - SERVER_HOSTNAME=178.32.56.55
+    - SSH_PORT=8896
+language: node_js
+node_js:
+  - "0.10"
+before_install:
+  - mkdir .keys
+  - touch .keys/id_rsa
+  - openssl aes-256-cbc -K $encrypted_968b55418556_key -iv $encrypted_968b55418556_iv -in id_rsa.enc -out .keys/id_rsa -d
+  - chmod 600 .keys/id_rsa
+  - ssh-add .keys/id_rsa
+after_success:
+  - echo "Host " $SERVER_HOSTNAME >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  - rm -rf out/
+  - mkdir out/
+  - cd out/
+  - git clone git@github.com:ovox/track.git
+  - cd track/
+  - git checkout $BRANCH_TO_DEPLOY --force
+  - git remote set-url origin 'ssh://deploy@'$SERVER_HOSTNAME':'$SSH_PORT'/git/track'
+  - git push origin --delete production
+  - git branch -D production
+  - git checkout -b production
+  - git push origin production --force
+  - cd ../..
+  - ssh -i .keys/id_rsa -o StrictHostKeyChecking=no -p $SSH_PORT deploy@$SERVER_HOSTNAME deployapp
+  - rm -rf .keys/

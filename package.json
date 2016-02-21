@@ -1,0 +1,44 @@
+{
+  "name": "track",
+  "version": "1.0.0",
+  "description": "TrackMyParcel =====",
+  "main": "app.js",
+  "dependencies": {
+    "auth-server": "^2.2.3",
+    "bcrypt": "^0.8.0",
+    "body-parser": "^1.9.0",
+    "cheerio": "^0.18.0",
+    "clone": "^1.0.0",
+    "connect": "^2.8.8",
+    "crypto": "0.0.3",
+    "express": "^4.9.7",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "jquery": "^2.1.1",
+    "jsdom": "^1.5.0",
+    "mandrill-api": "^1.0.41",
+    "md5": "^1.0.1",
+    "moment": "^2.9.0",
+    "mongoose": "3.8",
+    "node-fs": "^0.1.7",
+    "node-uuid": "^1.4.2",
+    "querystring": "^0.2.0",
+    "request": "^2.45.0",
+    "requestretry": "^1.2.2",
+    "util": "^0.10.3"
+  },
+  "scripts": {
+    "test": "grunt --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hornets/track.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hornets/track/issues"
+  },
+  "homepage": "https://github.com/hornets/track"
+}

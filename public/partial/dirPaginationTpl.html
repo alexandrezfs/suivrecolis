@@ -1,0 +1,9 @@
+<div class="pagination" ng-if="1 < pages.length">
+    <div class="next-pg pagination" ng-if="1 < pages.length">
+        <div class="next-pg-text">{{ pagination.current }} / {{ pagination.last }} </div>
+        <div class="green-button-out" ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }"> <a class="green-button" href="" title="" ng-click="setCurrent(1)">Previous page</a></div>
+        <div class="green-button-out" ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }"> <a class="green-button" href="" title="" ng-click="setCurrent(pagination.current - 1)">Previous page</a></div>
+        <div class="green-button-out" ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }"> <a class="green-button" href="" title="" ng-click="setCurrent(pagination.current + 1)">Next page</a></div>
+        <div class="green-button-out" ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }"> <a class="green-button" href="" title="" ng-click="setCurrent(pagination.last)">Next page</a></div>
+    </div>
+</div>

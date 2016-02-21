@@ -1,0 +1,64 @@
+<view-title>Notifications de suivi</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <h3>Updates</h3>
+
+                        <p>Toutes vos notifications de colis sont ici.</p>
+
+                        <div class="table" ng-if="notifications.length > 0">
+                            <div class="header-row">
+                                <div class="col-1">Date</div>
+                                <div class="col-2">Nom du colis</div>
+                                <div class="col-3">Code</div>
+                            </div>
+                            <div class="table-content" dir-paginate="notification in notifications | itemsPerPage: 20">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <p>Date</p>
+                                        {{ notification.created_at | amDateFormat:'LLLL' }} <br />
+                                        {{ notification.description }}
+
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Nom du colis</p>
+                                        {{ notification.parcel.parcel_name }}
+                                    </div>
+                                    <div class="col-3">
+                                        <p>Numéro de suivi</p>
+                                        <a href="/parcelTracking/{{ notification.parcel.carrier_uuid }}/{{ notification.parcel.code_tracking }}">{{ notification.parcel.code_tracking }}</a>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <p>Statut</p>
+                                        {{ notification.description }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <dir-pagination-controls template-url="partial/dirPaginationTpl.html"></dir-pagination-controls>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

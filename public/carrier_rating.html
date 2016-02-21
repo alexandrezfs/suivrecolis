@@ -1,0 +1,102 @@
+<view-title>Suivi de {{ carrier.name }}</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <div class="carrier-page-search ratings-track-search">
+                            <form name="homepage-tracker">
+                                <select class="selectPretty middle-select" id="carriersTrack"
+                                        ng-model="trackingForm.selectedCarrier"
+                                        ng-options="carrier.name for carrier in carriersTrack">
+                                    <option></option>
+                                </select>
+                                <input type="text" placeholder="Code de suivi colis"
+                                       ng-model="trackingForm.code_tracking">
+                                <input type="submit" value="Suivre" ng-click="trackIt(trackingForm)">
+                            </form>
+                        </div>
+                        <div class="choose-carrier">
+                            <h6>Choose Carrier</h6>
+                            <select class="selectPretty"
+                                    id="carrierRating"
+                                    ng-model="trackingForm.selectedCarrier"
+                                    ng-options="carrier.name for carrier in carriers"
+                                    ng-change="loadCarrierRatings(trackingForm.selectedCarrier.uuid)">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="testimonials">
+                            <div class="first-testimonial">
+                                <div class="first-testimonial-top">
+                                    <div class="title">{{ carrier.name }}</div>
+                                    <div class="first-testimonial-top-right">
+                                        <div class="grade">{{ ratingData.mark }}</div>
+                                        <div class="rating">
+                                            <div class="star" ng-repeat="star in ratingData.starRange">
+                                                <img ng-if="star.highlight == 1" src="images/big-star.png" alt=""/>
+                                                <img ng-if="star.highlight == 0" class="star"
+                                                     src="images/empty-big-star.png" alt=""/>
+                                            </div>
+                                        </div>
+                                        <span>Basé sur {{ ratingData.ratingCount }} évaluations</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="first-testimonial-bottom">
+                                    <div class="firm-logo"><img src="{{ carrier.image }}" alt=""/></div>
+                                    <div class="about-firm">
+                                        <p>Ratings breakdown</p>
+
+                                        <div class="records">
+                                            <div class="on-time">{{ ratingData.onTimeCount }} livraisons à tems</div>
+                                            <div class="late">{{ ratingData.lateCount }} livraisons en retard</div>
+                                            <div class="delivered">{{ ratingData.neverCount }} jamais livrés</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial grey" dir-paginate="rating in ratings | itemsPerPage: 20">
+                                <div class="firm-logo"><img src="{{ carrier.image }}" alt=""/></div>
+                                <div class="about-firm">
+                                    <div class="title">{{ carrier.name }}</div>
+                                    <div class="counter">{{ rating.created_at | date:"medium" }}</div>
+                                    <div class="rating">
+                                        <div class="star" ng-repeat="star in rating.starRange">
+                                            <img ng-if="star.highlight == 1" src="images/star.png" alt=""/>
+                                            <img ng-if="star.highlight == 0" class="star"
+                                                 src="images/empty-star.png" alt=""/>
+                                        </div>
+                                    </div>
+                                    <p>Un utilisateur enregistré {{ rating.user_type_value }} a tracké le colis {{ carrier.name }}
+                                        sur
+                                        SuivreColis.fr et a ainsi senti que le transport de
+                                        {{ carrier.name }} a été <span>{{ rating.service_quality_value }}</span>
+                                        . Dans l'ensemble, la qualité de l'acheminement a été
+                                        <span>{{ rating.deliver_type_value }}</span>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <dir-pagination-controls template-url="partial/dirPaginationTpl.html"></dir-pagination-controls>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

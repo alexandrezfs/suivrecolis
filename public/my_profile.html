@@ -1,0 +1,66 @@
+<view-title>Mon profil</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <h3>Mon profil</h3>
+
+                        <p>Mettre à jour les informations de votre profil</p>
+
+                        <div class="update-information">
+                            <form class="profile-update">
+                                <div class="form-border-bottom">
+                                    <div class="left-input">
+                                        <input type="text" placeholder="Prénom" ng-model="userForm.firstname">
+                                        <input type="text" placeholder="Téléphone" ng-model="userForm.phone">
+                                    </div>
+                                    <div class="right-input">
+                                        <input type="text" placeholder="Nom de famille" ng-model="userForm.lastname">
+                                    </div>
+                                </div>
+                                <input type="submit" value="Mettre à jour" ng-click="updateProfile(userForm)">
+                            </form>
+                        </div>
+
+                        <div style="clear:both"></div>
+
+                        <div class="update-information" style="margin-top: 50px">
+                            <form class="profile-update">
+                                <div class="form-border-bottom">
+                                    <div class="left-input">
+                                        <input type="password" placeholder="Mot de passe"
+                                               ng-model="changePasswdForm.newPassword">
+                                    </div>
+                                    <div class="right-input">
+                                        <input type="password" placeholder="Confirmation de mot de passe"
+                                               ng-model="changePasswdForm.newPasswordConfirmation">
+                                    </div>
+                                </div>
+                                <input type="submit" value="Changer son mot de passe"
+                                       ng-click="updatePassword(changePasswdForm)">
+                            </form>
+                        </div>
+
+                        <div style="clear:both"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

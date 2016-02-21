@@ -1,0 +1,47 @@
+<view-title>Contactez-nous</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"> </div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <h3>Nous contacter</h3>
+                        <p>N'utilisez pas ce formulaire si vous souhaitez savoir où se trouve votre colis. Merci.</p>
+                        <div class="contact-form">
+                            <form class="profile-update">
+                                <div class="form-border-bottom">
+                                    <div class="left-input">
+                                        <input type="text" placeholder="Prénom" ng-model="contactForm.firstname">
+                                        <input type="text" placeholder="Email" ng-model="contactForm.email">
+                                    </div>
+                                    <div class="right-input">
+                                        <input type="text" placeholder="Nom" ng-model="contactForm.lastname">
+                                        <input type="text" placeholder="Sujet" ng-model="contactForm.subject">
+                                    </div>
+                                    <textarea ng-model="contactForm.message" placeholder="Message"></textarea>
+                                </div>
+                                <div class="captcha">
+                                    <input type="text" ng-model="contactForm.captcha">
+                                    <img src="images/captcha.png" alt=""/> </div>
+                                <input type="submit" value="Envoyer le message" ng-click="sendMessage(contactForm)">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

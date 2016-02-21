@@ -1,0 +1,74 @@
+<view-title>Evaluer un transporteur</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <h3>Ajouter une évaluation</h3>
+
+                        <div class="regarding">
+                            <div class="company-logo-complaining"><img src="{{ carrier.image }}"
+                                                                       alt=""/></div>
+                            <p>Concernant la livraison de <span>{{ carrier.name }}</span> en acheminement à la date {{
+                                firstStep.scan_date | amDateFormat:'LLLL' }} à <span>sa destination</span>
+                            </p>
+                        </div>
+
+                        <div class="complain-sentence">
+                            Je suis le
+                            <select class="selectPretty green-select"
+                                    id="selectUserType"
+                                    ng-model="rating.selectedUserType"
+                                    ng-options="rating.value for rating in ratingData.userTypeSurvey">
+                                <option></option>
+                            </select>
+                            pour cette livraison de {{ carrier.name }} et j'ai senti que le service de {{ carrier.name }} a été
+                            <select class="selectPretty green-select"
+                                    id="selectServiceQuality"
+                                    ng-model="rating.selectedServiceQuality"
+                                    ng-options="rating.value for rating in ratingData.serviceQualitySurvey">
+                                <option></option>
+                            </select>
+                            dans ce cas. En considérant le temps à partir duquel {{ carrier.name }} a reçu le colis, jusqu'à la livraison à destination, ou quand une notification de livraison a été laissée, cette livraison a été
+                            <select class="selectPretty green-select"
+                                    id="selectDeliverSurvey"
+                                    ng-model="rating.selectedDeliverSurvey"
+                                    ng-options="rating.value for rating in ratingData.deliverSurvey">
+                                <option></option>
+                            </select>.
+                        </div>
+                        <div class="suggestion">
+                            <div class="suggestion-left">
+                                <p>Pour me rendre plus heureux avec ce service, je suggère <strong>{{ carrier.name }} :</strong>
+                                </p>
+                                <textarea ng-model="rating.suggest_comment"></textarea>
+                            </div>
+                            <div class="suggestion-right">
+                                <p>Une chose que j'ai apprécié de <strong>{{ carrier.name }}</strong> a été:</p>
+                                <textarea ng-model="rating.appreciate_comment"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="add-rating-submit">
+                            <input type="submit" value="Envoyer" ng-click="submitRating(rating)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

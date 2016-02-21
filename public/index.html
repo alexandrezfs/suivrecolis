@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html ng-app="TrackApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <title ng-bind-template="{{viewTitle}} - Suivre Colis .fr"></title>
+    <meta name="description"
+          content="Suivez tous vos colis COLISSIMO, DHL, UPS, DPD et bien d'autres sur un seul site et en toute simplicité."/>
+    <meta name="robots" content="index, follow"/>
+    <meta name="keywords"
+          content="suivi colis, colissimo suivi, la poste suivi, la poste, ups, dhl"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cache-control" content="no-cache">
+
+    <base href="/">
+    <meta name="fragment" content="!">
+
+    <link href='//fonts.googleapis.com/css?family=Lato:400,900italic,900,700italic,400italic,700,300italic,300,100italic,100|Open+Sans:400,800italic,800,700italic,700,600italic,400italic,600,300italic,300|Open+Sans+Condensed:300,700,300italic'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/timeline.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/sweetalert/lib/sweet-alert.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/custom-select/select2.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/smoke.js/smoke.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-loading-bar/src/loading-bar.css">
+
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/custom-select/select2.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+    <script src="bower_components/smoke.js/smoke.min.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="bower_components/jquery-cookie/jquery.cookie.js"></script>
+    <script src="bower_components/angulartics/src/angulartics.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-piwik.js"></script>
+    <script src="bower_components/angular-loading-bar/src/loading-bar.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/moment/locale/fr.js"></script>
+    <script src="js/vendor/form-custom.js"></script>
+    <script src="js/vendor/jquery.bxslider.min.js"></script>
+    <script src="js/vendor/jquery.customSelect.min.js"></script>
+    <script src="js/vendor/angular-viewhead.js"></script>
+
+    <script src="js/script.js"></script>
+    <script src="js/adstuff.js"></script>
+    <script src="js/angular/app.js"></script>
+    <script src="js/angular/filters.js"></script>
+    <script src="js/angular/directives.js"></script>
+    <script src="js/angular/services.js"></script>
+    <script src="js/angular/controllers.js"></script>
+    <script src="js/angular/controller/addNewParcelController.js"></script>
+    <script src="js/angular/controller/addRatingController.js"></script>
+    <script src="js/angular/controller/carrierRatingController.js"></script>
+    <script src="js/angular/controller/carrierRatingsController.js"></script>
+    <script src="js/angular/controller/contactController.js"></script>
+    <script src="js/angular/controller/flyRegistrationController.js"></script>
+    <script src="js/angular/controller/forgotPasswordController.js"></script>
+    <script src="js/angular/controller/helpController.js"></script>
+    <script src="js/angular/controller/homeController.js"></script>
+    <script src="js/angular/controller/locationDetailsController.js"></script>
+    <script src="js/angular/controller/myParcelController.js"></script>
+    <script src="js/angular/controller/myProfileController.js"></script>
+    <script src="js/angular/controller/parcelTrackingController.js"></script>
+    <script src="js/angular/controller/postOfficeLocationController.js"></script>
+    <script src="js/angular/controller/resetPasswordController.js"></script>
+    <script src="js/angular/controller/signRegisterController.js"></script>
+    <script src="js/angular/controller/updatesController.js"></script>
+
+    <script type="text/javascript">
+        //Redirect if using IE 9 or lt
+        if ($.browser.msie && $.browser.version < 9) {
+            document.location.href = "/error_page.html";
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div ng-show="!userSession" class="header">
+    <div class="container">
+        <div class="main-content">
+            <div class="logo"> <a href="/home"><img src="images/logo.png" alt="logo"/></a> </div>
+            <div class="nav">
+                <ul>
+                    <li><a class="shmenu">Menu</a></li>
+                </ul>
+                <ul id="menu-header-menu">
+                    <li><a href="/home" title="">Accueil</a></li>
+                    <li><a href="/carrierRatings" title="">Evaluations</a></li>
+                    <li><a href="/postOfficeLocation" title="">Bureaux de poste</a></li>
+                    <li><a href="/help" title="">FAQ</a></li>
+                    <li><a href="/contact" title="">Contact</a></li>
+                    <li class="login-main-nav"><a href="/signRegister" title="">Se connecter</a></li>
+                    <li class="register-main-nav" ><a href="/signRegister" title="">S'enregistrer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="userSession" class="header">
+    <div class="container">
+        <div class="main-content">
+            <div class="logo"> <a href="/home"><img src="images/logo.png" alt="logo"/></a> </div>
+            <div class="social-count"> <div class="fb-like" data-href="https://facebook.com/SuivreColis" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div> <span>273,829</span> people like this.</div>
+            <div class="nav nav-interior-pages">
+                <ul>
+                    <li><a class="shmenu-interior">Menu</a></li>
+                </ul>
+                <ul class="menu">
+                    <li><a href="/home" title="">Accueil</a></li>
+                    <li><a href="/carrierRatings" title="">Evaluations</a></li>
+                    <li><a href="/postOfficeLocation" title="">Bureaux de poste</a></li>
+                    <li><a href="/help" title="">FAQ</a></li>
+                    <li><a href="/contact" title="">Contact</a></li>
+                    <li class="login-main-nav"><a  href="/myProfile" title="">{{ userSession.firstname | limitTo: 6 }}</a></li>
+                </ul>
+                <ul class="user-nav">
+                    <li class="notification" ><a href="/updates" title=""><img src="images/Alarm-Bell.png" alt=""/></a>
+                        <div class="notification-active"></div>
+                    </li>
+                    <li class="settings" ><a href="/myParcel" title=""><img src="images/settings.png" alt=""/></a></li>
+                    <li class="log-out" ><a href="/logout" title=""><img src="images/logout.png" alt=""/></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-view></div>
+
+<div class="carousel">
+    <div class="container">
+        <div class="slider">
+            <div class="slide"><img src="images/dpd.png" alt="DPD Tracking" height="100"/></div>
+            <div class="slide"><img src="images/tnt.png" alt="TNT Tracking" height="100"/></div>
+            <div class="slide"><img src="images/dhl.png" alt="DHL Tracking" height="100"/></div>
+            <div class="slide"><img src="images/laposte.png" alt="LAPOSTE Tracking" height="100"/></div>
+            <div class="slide"><img src="images/chronopost.png" alt="CHRONOPOSTE Tracking" height="100"/></div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="menu-footer">
+            <ul>
+                <li><a class="shmenufooter">Menu</a></li>
+            </ul>
+            <ul id="footer-menu">
+                <li><a href="/home" title="">Accueil</a></li>
+                <li><a href="/carrierRatings" title="">Evaluations</a></li>
+                <li><a href="/postOfficeLocation" title="">Bureaux de poste</a></li>
+                <li><a href="/help" title="">FAQ</a></li>
+                <li><a href="/contact" title="">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-logo"> <a href="http://SuivreColis.fr" title="Homepage"><img src="images/logo-footer.png" alt="logo"/></a>
+            <p>Copyright © 2015 SuivreColis</p>
+        </div>
+    </div>
+</div>
+
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</body>
+
+</html>

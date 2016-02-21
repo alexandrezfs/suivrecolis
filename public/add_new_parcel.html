@@ -1,0 +1,111 @@
+<view-title>Ajouter un nouveau colis</view-title>
+
+<div class="page">
+    <div class="white-part">
+        <div class="container">
+            <!-- nav-->
+            <div class="main-content"></div>
+            <!-- end nav-->
+            
+            <div class="container">
+                <!-- sidebar -->
+                <div class="sidebar">
+                    <div class="ad-banner">
+                        <!--<div id="4843873"></div>-->
+                        <div data-ng-dfp-ad="div-gpt-ad-1426258733475-0"></div>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+                <div class="main-content">
+                    <div class="profile-page">
+                        <h3>Ajouter un colis</h3>
+
+                        <p>Ajoutez un colis à votre compte. Vous pouvez donner un nom pour vous en souvenir plus facilement. Vous pouvez opter pour la réception de notifications à chaque fois que votre colis change d'endroit.</p>
+
+                        <div class="add-parcel">
+                            <form>
+                                <input type="text" placeholder="Nom du colis" ng-model="trackingForm.parcel_name">
+
+                                <h6>Carrier</h6>
+
+                                <div class="select-right">
+                                     <input type="text" placeholder="Code de suivi"
+                                           ng-model="trackingForm.code_tracking">
+                                </div>
+                                <div class="select-left">
+                                    <select id="selectPrettyCarrier" class="selectPretty long-select selectCarrier"
+                                            ng-model="trackingForm.carrier"
+                                            ng-options="carrier.name for carrier in carriers">
+                                        <option></option>
+                                    </select>                                   
+                                </div>
+
+                                <!-- <div class="sent-from">
+                                    <h6>Sent from</h6>
+
+                                    <div class="select-left">
+                                        <select id="selectPrettyCountriesDeparture"
+                                                class="selectPretty long-select selectCountry"
+                                                ng-model="trackingForm.country_departure"
+                                                ng-options="country.name for country in countriesDeparture"
+                                                ng-change="loadRegionsByCountry(trackingForm.country_departure, 'departure')">
+                                            <option></option>
+                                        </select>
+                                        <select class="selectPretty long-select"
+                                                id="selectPrettyRegionDeparture"
+                                                ng-model="trackingForm.region_departure"
+                                                ng-options="region.name for region in regionsDeparture"
+                                                ng-change="loadCitiesByCountryRegion(trackingForm.region_departure, 'departure')">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="select-right">
+                                        <select class="selectPretty long-select"
+                                                id="selectPrettyCityDeparture"
+                                                ng-model="trackingForm.city_departure"
+                                                ng-options="city.name for city in citiesDeparture">
+                                            <option></option>
+                                        </select>
+                                        <input type="text" placeholder="Address"
+                                               ng-model="trackingForm.address_departure">
+                                    </div>
+                                </div>
+                                <div class="destination">
+                                    <h6>Destination</h6>
+
+                                    <div class="select-left">
+                                        <select id="selectPrettyCountriesArrival"
+                                                class="selectPretty long-select selectCountry"
+                                                ng-model="trackingForm.country_arrival"
+                                                ng-options="country.name for country in countriesArrival"
+                                                ng-change="loadRegionsByCountry(trackingForm.country_arrival, 'arrival')">
+                                            <option></option>
+                                        </select>
+                                        <select class="selectPretty long-select"
+                                                id="selectPrettyRegionArrival"
+                                                ng-model="trackingForm.region_arrival"
+                                                ng-options="region.name for region in regionsArrival"
+                                                ng-change="loadCitiesByCountryRegion(trackingForm.region_arrival, 'arrival')">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="select-right">
+                                        <select class="selectPretty long-select"
+                                                id="selectPrettyCityArrival"
+                                                ng-model="trackingForm.city_arrival"
+                                                ng-options="city.name for city in citiesArrival">
+                                            <option></option>
+                                        </select>
+                                        <input type="text" placeholder="Address"
+                                               ng-model="trackingForm.address_arrival">
+                                    </div>
+                                </div> -->
+                                <input type="submit" value="Ajouter un nouveau colis" ng-click="addParcel()">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
